@@ -1,0 +1,20 @@
+https://support.auvik.com/hc/en-us/articles/206311526-How-to-enable-SNMP-on-a-VMware-ESXi-hypervisor
+
+How to enable SNMP on ESXi 5.5
+
+esxcli system snmp set --communities YOUR_STRING
+esxcli system snmp set --enable true
+esxcli network firewall ruleset set --ruleset-id snmp --allowed-all true
+esxcli network firewall ruleset set --ruleset-id snmp --enabled true
+/etc/init.d/snmpd restart
+
+How to enable SNMP on ESXi 6.x
+
+# Configure ESXi SNMP using CLI
+
+esxcli system snmp set -r
+esxcli system snmp set -c YOUR_STRING
+esxcli system snmp set -p 161
+esxcli system snmp set -L "City, State, Country"
+esxcli system snmp set -C noc@example.com
+esxcli system snmp set -e yes

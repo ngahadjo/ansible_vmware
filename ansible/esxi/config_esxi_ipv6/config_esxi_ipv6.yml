@@ -1,0 +1,16 @@
+---
+- hosts: localhost 
+  gather_facts: false
+  connection: local 
+  vars_files:
+    - all_config.yml
+  tasks:
+  - name: "Change ESXi IPv6 configuration"
+    vmware_host_ipv6:
+      hostname: "{{ vcenter_server }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: no
+      cluster_name: "{{ cluster_name }}" 
+      state: disabled 
+    delegate_to: localhost

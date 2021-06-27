@@ -1,0 +1,2 @@
+[esxi-host]
+server01.akaicloud.com hostname="server01" domainname="akaicloud.com"

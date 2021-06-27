@@ -1,0 +1,15 @@
+---
+- hosts: all 
+  gather_facts: false
+  connection: local 
+  vars_files:
+    - all_config.yml
+  tasks:
+  - name: "Get ESXi System configuration information"
+    vmware_host_facts:
+      hostname: "{{ vcenter_server }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: False
+      esxi_hostname: "{{ inventory_hostname }}" 
+    delegate_to: localhost

@@ -1,0 +1,22 @@
+---
+- hosts: localhost 
+  gather_facts: false
+  connection: local 
+  vars:
+      vcenter_server: "vcenter.akaicloud.com"
+      vcenter_user: "myusufe@akaicloud.com"
+      vcenter_pass: "password"
+      datacenter_name: "Datacenter01"
+      cluster_name: "Cluster01"
+  tasks:
+  - name: Configure NTP servers for an ESXi Host
+    vmware_host_ntp:
+      hostname: "{{ vcenter_server }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: False
+      esxi_hostname: server01.akaicloud.com
+      ntp_servers:
+        - 192.168.125.53 
+        - 192.168.125.54
+    delegate_to: localhost

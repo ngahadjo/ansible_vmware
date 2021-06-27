@@ -1,0 +1,15 @@
+---
+- hosts: localhost 
+  gather_facts: false
+  connection: local 
+  vars_files:
+    - all_config.yml
+  tasks:
+  - name: Gather NTP info about all ESXi Hosts in given Cluster 
+    vmware_host_ntp_info:
+      hostname: "{{ vcenter_server }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: False
+      cluster_name: "{{ cluster_name }}"
+    delegate_to: localhost

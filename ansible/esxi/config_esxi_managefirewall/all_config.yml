@@ -1,0 +1,5 @@
+vcenter_server: "vcenter.akaicloud.com"
+vcenter_user: "myusufe@akaicloud.com"
+vcenter_pass: "password"
+datacenter_name: "Datacenter01"
+cluster_name: "Cluster01"

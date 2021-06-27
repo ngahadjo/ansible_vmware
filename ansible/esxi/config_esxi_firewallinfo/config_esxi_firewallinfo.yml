@@ -1,0 +1,15 @@
+---
+- hosts: all 
+  gather_facts: false
+  connection: local 
+  vars_files:
+    - all_config.yml
+  tasks:
+  - name: "Gather firewall info about all ESXi Host in given Cluster"
+    vmware_host_firewall_info:
+      hostname: "{{ vcenter_server }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: False
+      cluster_name: "{{ cluster_name }}"
+    delegate_to: localhost

@@ -1,0 +1,19 @@
+---
+- hosts: all 
+  gather_facts: false
+  connection: local 
+  vars_files:
+    - all_config.yml
+  tasks:
+  - name: "{{ inventory_hostname }}"
+    vmware_dns_config:
+      hostname: "{{ inventory_hostname }}"
+      username: "{{ esxi_username }}"
+      password: "{{ esxi_password }}"
+      validate_certs: False
+      change_hostname_to: "{{ hostname }}" 
+      domainname: "{{ domainname }}"
+      dns_servers:
+        - 192.168.125.53 
+        - 192.168.125.54
+    delegate_to: localhost
